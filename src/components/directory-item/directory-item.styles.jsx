@@ -16,7 +16,7 @@ export const BodyContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 2px solid black;
-  background-color: white;
+  background-color: #f1f1f1;
   opacity: 0.8;
   position: absolute;
 `;
@@ -37,7 +37,7 @@ export const PContainer = styled.p`
 
 export const DirectoryItemContainer = styled.div`
   min-width: 30%;
-  height: 240px;
+  height: 300px;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -65,6 +65,22 @@ export const DirectoryItemContainer = styled.div`
 
   &:first-child {
     margin-right: 7.5px;
+  }
+
+  &:nth-child(1) {
+    margin: 0px;
+  }
+
+  &:nth-child(3) {
+    margin: 0px;
+  }
+
+  &:nth-child(4) {
+    margin: 0px;
+  }
+
+  &:nth-child(5) {
+    margin: 0px;
   }
 
   &:last-child {
