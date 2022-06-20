@@ -9,6 +9,7 @@ import {
   CheckoutHeader,
   HeaderBlock,
   Total,
+  Span,
 } from "./checkout.styles";
 
 const Checkout = () => {
@@ -18,19 +19,19 @@ const Checkout = () => {
     <CheckoutContainer>
       <CheckoutHeader>
         <HeaderBlock>
-          <span>Product</span>
+          <Span>Product</Span>
         </HeaderBlock>
         <HeaderBlock>
-          <span>Description</span>
+          <Span>Description</Span>
         </HeaderBlock>
         <HeaderBlock>
-          <span>Quantity</span>
+          <Span>Quantity</Span>
         </HeaderBlock>
         <HeaderBlock>
-          <span>Price</span>
+          <Span>Price</Span>
         </HeaderBlock>
         <HeaderBlock>
-          <span>Remove</span>
+          <Span>Remove</Span>
         </HeaderBlock>
       </CheckoutHeader>
       {cartItems.map((cartItem) => (

@@ -16,7 +16,7 @@ export const BodyContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 2px solid black;
-  background-color: #f1f1f1;
+  background-color: white;
   opacity: 0.8;
   position: absolute;
 `;
@@ -43,7 +43,7 @@ export const DirectoryItemContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  margin: 0 7.5px 15px;
+  margin: 0 7.5px 7.5px;
   overflow: hidden;
 
   &:hover {
@@ -85,5 +85,32 @@ export const DirectoryItemContainer = styled.div`
 
   &:last-child {
     margin-left: 7.5px;
+  }
+
+  @media only screen and (max-width: 374px) {
+    &:nth-child(2) {
+      margin: 0px;
+    }
+    &:last-child {
+      margin-left: 0px;
+    }
+  }
+  @media only screen and (min-width: 375px) and (max-width: 420px) {
+    min-width: 40%;
+    &:nth-child(1) {
+      margin: 0px 7.5px 0px 0px;
+    }
+    &:nth-child(2) {
+      margin: 0px 0px 7.5px;
+    }
+    &:nth-child(3) {
+      margin: 0px 7.5px 0px 0px;
+    }
+    &:nth-child(4) {
+      margin: 0px 0px 7.5px;
+    }
+    &:nth-child(5) {
+      margin: 0;
+    }
   }
 `;
