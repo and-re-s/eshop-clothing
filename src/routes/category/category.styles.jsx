@@ -8,12 +8,10 @@ export const CategoryContainer = styled.div`
   @media only screen and (max-width: 374px) {
     grid-template-columns: repeat(1, 1fr);
   }
-
   @media only screen and (min-width: 375px) and (max-width: 520px) {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 10px;
   }
-
   @media only screen and (min-width: 521px) and (max-width: 767px) {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 10px;

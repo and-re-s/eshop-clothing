@@ -6,15 +6,13 @@ export const CheckoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px auto 0;
+  margin: 25px auto 0;
   @media only screen and (max-width: 374px) {
     width: 100%;
   }
-
   @media only screen and (min-width: 375px) and (max-width: 520px) {
     width: 100%;
   }
-
   @media only screen and (min-width: 521px) and (max-width: 932px) {
     width: 90%;
   }

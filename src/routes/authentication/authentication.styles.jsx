@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const FormsContainer = styled.div`
+export const AuthenticationContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  width: 900px;
+  justify-content: space-between;
+  margin: 30px auto;
 `;

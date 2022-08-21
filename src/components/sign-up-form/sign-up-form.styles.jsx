@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SignUpContainer = styled.div`
-  width: 30%;
+  width: 35%;
   margin: 1rem 3rem 3rem 3rem;
 `;
 export const H2Container = styled.h2`
@@ -12,12 +12,12 @@ export const H2Container = styled.h2`
 `;
 
 export const SpanContainer = styled.span`
-  display: flex;
+  display: grid;
+  place-items: center;
   font-size: 1.2rem;
-  justify-content: center;
 `;
 
-// .signup-buttons-container {
-//   width: 100%;
-//   display: inline-flex;
-// }
+export const SignupButtonsContainer = styled.div`
+  width: 100%;
+  display: grid;
+`;

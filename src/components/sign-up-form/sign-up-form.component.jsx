@@ -11,6 +11,7 @@ import {
   SignUpContainer,
   H2Container,
   SpanContainer,
+  SignupButtonsContainer,
 } from "./sign-up-form.styles";
 
 const defaultFormFields = {
@@ -97,11 +98,11 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <div className="signup-buttons-container">
+        <SignupButtonsContainer>
           <Button type="sumbit" onClick={handleSubmit}>
             Sign Up
           </Button>
-        </div>
+        </SignupButtonsContainer>
       </form>
     </SignUpContainer>
   );

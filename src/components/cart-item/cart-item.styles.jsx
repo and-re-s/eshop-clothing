@@ -25,3 +25,7 @@ export const ItemDetails = styled.div`
 export const Name = styled.span`
   font-size: 16px;
 `;
+
+export const Price = styled.span`
+  font-size: 14px;
+`;
