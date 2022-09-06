@@ -8,7 +8,7 @@ import { clearAllCartItems } from "../../store/cart/cart.action";
 import { selectCurrentUser } from "../../store/user/user.selector";
 
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
-import Spinner from "../spinner/spinner.component";
+import Spinner from "../spinner/spinner.component.tsx";
 
 import {
   PaymentFormContainer,

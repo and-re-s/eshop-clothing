@@ -15,7 +15,10 @@ import {
   emailSignInStart,
 } from "../../store/user/user.action";
 
-const defaultFormFields = {
+const defaultFormFields: {
+  email: string;
+  password: string;
+} = {
   email: "",
   password: "",
 };
