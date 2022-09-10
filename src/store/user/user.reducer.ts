@@ -1,6 +1,12 @@
 import { USER_ACTION_TYPES } from "./user.types";
 
-const INITIAL_STATE = {
+export type UserState = {
+  currentUser: any;
+  isLoading: boolean;
+  error: any;
+};
+
+const INITIAL_STATE: UserState = {
   currentUser: null,
   isLoading: false,
   error: null,
