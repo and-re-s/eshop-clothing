@@ -22,7 +22,6 @@ import {
   createAuthUserWithEmailAndPassword,
   signOutUser,
   AdditionalInformation,
-  UserData,
 } from "../../utils/firebase/firebase.utils";
 
 import { User } from "firebase/auth";

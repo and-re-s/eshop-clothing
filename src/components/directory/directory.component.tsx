@@ -41,7 +41,7 @@ const categories = [
   },
 ];
 
-const Directory = ({}) => {
+const Directory = () => {
   return (
     <DirectoryContainer>
       {categories.map((category) => (
