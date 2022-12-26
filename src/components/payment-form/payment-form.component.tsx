@@ -28,7 +28,7 @@ const PaymentForm = () => {
 
   const clearCartHandler = () => dispatch(clearAllCartItems());
 
-  const paymentHandler = async (event: any) => {
+  const paymentHandler = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
