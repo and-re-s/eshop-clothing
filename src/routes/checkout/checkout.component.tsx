@@ -1,5 +1,8 @@
 import { useSelector } from "react-redux";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "../../utils/stripe/stripe.utils";
+
 import {
   selectCartItems,
   selectCartTotal,
@@ -20,30 +23,32 @@ const Checkout = () => {
   const cartTotal = useSelector(selectCartTotal);
 
   return (
-    <CheckoutContainer>
-      <CheckoutHeader>
-        <HeaderBlock>
-          <span>Product</span>
-        </HeaderBlock>
-        <HeaderBlock>
-          <span>Description</span>
-        </HeaderBlock>
-        <HeaderBlock>
-          <span>Quantity</span>
-        </HeaderBlock>
-        <HeaderBlock>
-          <span>Price</span>
-        </HeaderBlock>
-        <HeaderBlock>
-          <span>Remove</span>
-        </HeaderBlock>
-      </CheckoutHeader>
-      {cartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-      ))}
-      <Total>Total: ${cartTotal}</Total>
-      <PaymentForm />
-    </CheckoutContainer>
+    <Elements stripe={stripePromise}>
+      <CheckoutContainer>
+        <CheckoutHeader>
+          <HeaderBlock>
+            <span>Product</span>
+          </HeaderBlock>
+          <HeaderBlock>
+            <span>Description</span>
+          </HeaderBlock>
+          <HeaderBlock>
+            <span>Quantity</span>
+          </HeaderBlock>
+          <HeaderBlock>
+            <span>Price</span>
+          </HeaderBlock>
+          <HeaderBlock>
+            <span>Remove</span>
+          </HeaderBlock>
+        </CheckoutHeader>
+        {cartItems.map((cartItem) => (
+          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+        ))}
+        <Total>Total: ${cartTotal}</Total>
+        <PaymentForm />
+      </CheckoutContainer>
+    </Elements>
   );
 };
 
