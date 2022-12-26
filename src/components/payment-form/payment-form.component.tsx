@@ -28,10 +28,11 @@ const PaymentForm = () => {
 
   const clearCartHandler = () => dispatch(clearAllCartItems());
 
-  const paymentHandler = async (event: FormEvent<HTMLFormElement>) => {
+  const paymentHandler = async (event: any) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
+      console.log("fail");
       return;
     }
 
@@ -80,7 +81,7 @@ const PaymentForm = () => {
         {stripe && elements ? <CardContainer /> : <Spinner />}
         <ButtonContainer>
           <Button
-            onClick={(e) => paymentHandler}
+            onClick={(e) => paymentHandler(e)}
             isLoading={isProcessingPayment}
             buttonType={BUTTON_TYPE_CLASSES.inverted}
           >
