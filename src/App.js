@@ -9,18 +9,20 @@ const Home = lazy(() => import("./routes/home/home.component"));
 const Authentication = lazy(() =>
   import("./routes/authentication/authentication.component")
 );
-const Shop = lazy(() => import("./routes/shop/shop.component"));
-const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
 const Navigation = lazy(() =>
   import("./routes/navigation/navigation.component")
 );
+const Shop = lazy(() => import("./routes/shop/shop.component"));
+const Cart = lazy(() => import("./routes/cart/cart.component"));
+const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
+const Orders = lazy(() => import("./routes/orders/orders.component"));
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(checkUserSession());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Suspense fallback={<Spinner />}>
@@ -29,7 +31,9 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="shop/*" element={<Shop />} />
           <Route path="auth" element={<Authentication />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
+          <Route path="orders" element={<Orders />} />
         </Route>
       </Routes>
     </Suspense>

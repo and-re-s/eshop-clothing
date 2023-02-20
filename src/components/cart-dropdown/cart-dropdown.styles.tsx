@@ -3,11 +3,11 @@ import Button from "../button/button.component";
 
 export const CartDropDownContainer = styled.div`
   position: absolute;
-  width: 240px;
-  height: 340px;
+  width: 245px;
+  height: 395px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   border: 1px solid black;
   background-color: white;
   top: 90px;
@@ -57,5 +57,5 @@ export const EmptyMessage = styled.span`
 `;
 
 export const CartButton = styled(Button)`
-  margin-top: auto;
+  margin: 10px 0 0 0;
 `;

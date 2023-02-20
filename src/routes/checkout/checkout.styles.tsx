@@ -1,67 +1,45 @@
 import styled from "styled-components";
 
 export const CheckoutContainer = styled.div`
-  width: 55%;
-  min-height: 90vh;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  @media only screen and (max-width: 374px) {
+    flex-flow: column wrap;
+    row-gap: 10px;
+  }
+`;
+
+export const CartItems = styled.div`
+  height: 90%;
+  flex-direction: column;
+  overflow: auto;
+  margin-top: 5%;
+`;
+
+export const EmptyMessage = styled.span`
+  font-size: 1.4rem;
+  margin: auto auto;
+`;
+
+export const Order = styled.div`
+  width: 35%;
+`;
+
+export const OrderTitle = styled.h1`
+  font-size: 26px;
+  text-align: center;
+`;
+
+export const PaymentAndDeliveryContainer = styled.div`
+  width: 65%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 25px auto 0;
-  @media only screen and (max-width: 374px) {
-    width: 100%;
-  }
-  @media only screen and (min-width: 375px) and (max-width: 520px) {
-    width: 100%;
-  }
-  @media only screen and (min-width: 521px) and (max-width: 932px) {
-    width: 90%;
-  }
+  padding: 0% 10% 15% 10%;
 `;
 
-export const CheckoutHeader = styled.div`
-  width: 100%;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid darkgrey;
+export const Delivery = styled.div`
+  padding: 0% 10% 0% 10%;
 `;
 
-export const HeaderBlock = styled.div`
-  text-transform: capitalize;
-  width: 23%;
-  font-size: 1.4rem;
-  &:nth-child(5) {
-    width: 9%;
-  }
-  @media only screen and (max-width: 374px) {
-    &:nth-child(5) {
-      width: 15%;
-    }
-  }
-  @media only screen and (min-width: 375px) and (max-width: 520px) {
-    &:nth-child(5) {
-      width: 15%;
-    }
-  }
-`;
-
-export const Total = styled.span`
-  margin-top: 30px;
-  margin-left: auto;
-  font-size: 36px;
-  @media only screen and (max-width: 374px) {
-    font-size: 24px;
-  }
-  @media only screen and (min-width: 375px) and (max-width: 520px) {
-    font-size: 28px;
-  }
-`;
-
-export const Span = styled.span`
-  @media only screen and (max-width: 374px) {
-    font-size: 14px;
-  }
-  @media only screen and (min-width: 375px) and (max-width: 520px) {
-    font-size: 16px;
-  }
-`;
+export const Payment = styled.div``;

@@ -31,7 +31,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
     <ProductCardContainer>
       <ProductImg src={imageUrl} alt={`${name}`} />
       <Footer>
-        <Name>{name}</Name>
+        <Name>{name} hihihi</Name>
         <span className="price">{price}</span>
       </Footer>
       <ProductButton
