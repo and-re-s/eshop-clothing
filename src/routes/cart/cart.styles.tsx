@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Button from "../../components/button/button.component";
 
 export const CartContainer = styled.div`
   width: 55%;
@@ -35,6 +34,7 @@ export const HeaderBlock = styled.div`
     width: 9%;
   }
   @media only screen and (max-width: 374px) {
+    transform: rotate(-45deg);
     &:nth-child(5) {
       width: 15%;
     }
@@ -67,6 +67,9 @@ export const Span = styled.span`
   }
 `;
 
-export const GoToCheckoutButton = styled(Button)`
-  margin-top: 5%;
+export const ButtonsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3%;
 `;

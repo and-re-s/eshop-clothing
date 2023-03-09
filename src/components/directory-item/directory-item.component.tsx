@@ -6,7 +6,7 @@ import { CategoriesShape } from "../directory/directory.component";
 
 import {
   DirectoryItemContainer,
-  BackgroundImage,
+  BackgroundImages,
   BodyContainer,
   H2Container,
   PContainer,
@@ -24,7 +24,7 @@ const DirectoryItem: FC<DirectoryItemProps> = ({ category }) => {
 
   return (
     <DirectoryItemContainer onClick={onNavigateHandler}>
-      <BackgroundImage imageUrl={imageUrl} />
+      <BackgroundImages imageUrl={imageUrl} />
       <BodyContainer>
         <H2Container>{title}</H2Container>
         <PContainer>Shop now</PContainer>

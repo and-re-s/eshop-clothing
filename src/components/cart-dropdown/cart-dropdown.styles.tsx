@@ -56,6 +56,14 @@ export const EmptyMessage = styled.span`
   margin: auto auto;
 `;
 
-export const CartButton = styled(Button)`
+export const CartButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 10px 0 0 0;
+`;
+
+export const CartButton = styled(Button)`
+  margin: 0 0 10px 0;
 `;

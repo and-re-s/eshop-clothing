@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, ChangeEvent } from "react";
 
 import FormInput from "../form-input/form-input.component";
 
@@ -26,7 +26,7 @@ const AdressForm = () => {
     postcode,
   } = formFields;
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };

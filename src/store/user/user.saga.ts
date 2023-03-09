@@ -38,7 +38,7 @@ export function* getSnapshotFromUserAuth(
     );
     if (userSnapshot) {
       yield* put(
-        signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() })
+        signInSuccess({ ...userSnapshot.data(), id: userSnapshot.id })
       );
     }
   } catch (error) {

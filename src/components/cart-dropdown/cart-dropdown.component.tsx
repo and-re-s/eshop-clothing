@@ -1,30 +1,43 @@
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { selectCartItems } from "../../store/cart/cart.selector";
-import { selectCurrentUser } from "../../store/user/user.selector";
+import {
+  selectCartItems,
+  selectIsCartOpen,
+} from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.action";
+
 import CartPreviewItem from "../cart-preview-item/cart-preview-item.component";
 
 import {
   CartDropDownContainer,
   EmptyMessage,
   CartItems,
+  CartButtonContainer,
   CartButton,
 } from "./cart-dropdown.styles";
-import { useCallback } from "react";
 
 const CartDropdown = () => {
-  const cartItems = useSelector(selectCartItems);
-  const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const isCartOpen = useSelector(selectIsCartOpen);
+
+  const toggleIsCartOpen = useCallback(
+    () => dispatch(setIsCartOpen(!isCartOpen)),
+    [isCartOpen, dispatch]
+  );
 
   const goToCheckoutHandler = useCallback(() => {
     navigate("/cart");
-  }, [navigate]);
+    toggleIsCartOpen();
+  }, [navigate, toggleIsCartOpen]);
 
   const goToOrdersHistoryHandler = useCallback(() => {
     navigate("/orders");
-  }, [navigate]);
+    toggleIsCartOpen();
+  }, [navigate, toggleIsCartOpen]);
 
   return (
     <CartDropDownContainer>
@@ -37,12 +50,13 @@ const CartDropdown = () => {
           <EmptyMessage>Your cart is empty</EmptyMessage>
         )}
       </CartItems>
-      <CartButton onClick={goToCheckoutHandler}>GO TO CART</CartButton>
-      {currentUser ? (
+      <CartButtonContainer>
+        <CartButton onClick={goToCheckoutHandler}>GO TO CART</CartButton>
+
         <CartButton onClick={goToOrdersHistoryHandler}>
           ORDERS HISTORY
         </CartButton>
-      ) : null}
+      </CartButtonContainer>
     </CartDropDownContainer>
   );
 };

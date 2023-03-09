@@ -1,18 +1,22 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import {
   selectCartItems,
   selectCartTotal,
 } from "../../store/cart/cart.selector";
+import { clearAllCartItems } from "../../store/cart/cart.action";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import Button, {
+  BUTTON_TYPE_CLASSES,
+} from "../../components/button/button.component";
 
 import {
   CartContainer,
   CartHeader,
   HeaderBlock,
   Total,
-  GoToCheckoutButton,
+  ButtonsContainer,
 } from "./cart.styles";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
@@ -21,6 +25,9 @@ const Cart = () => {
   const navigate = useNavigate();
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+  const dispatch = useDispatch();
+
+  const clearCartHandler = () => dispatch(clearAllCartItems());
 
   const goToCheckoutHandler = useCallback(() => {
     if (!cartItems.length) {
@@ -28,7 +35,7 @@ const Cart = () => {
     } else {
       navigate("../checkout");
     }
-  }, [navigate]);
+  }, [navigate, cartItems.length]);
 
   return (
     <CartContainer>
@@ -53,9 +60,15 @@ const Cart = () => {
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <Total>Total: ${cartTotal}</Total>
-      <GoToCheckoutButton onClick={goToCheckoutHandler}>
-        CHECKOUT
-      </GoToCheckoutButton>
+      <ButtonsContainer>
+        <Button
+          buttonType={BUTTON_TYPE_CLASSES.clearCart}
+          onClick={clearCartHandler}
+        >
+          CLEAR CART :(
+        </Button>
+        <Button onClick={goToCheckoutHandler}>CHECKOUT</Button>
+      </ButtonsContainer>
     </CartContainer>
   );
 };

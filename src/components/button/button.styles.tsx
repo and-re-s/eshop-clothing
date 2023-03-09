@@ -59,6 +59,17 @@ export const InvertedButton = styled(BaseButton)`
   }
 `;
 
+export const ClearCartButton = styled(BaseButton)`
+  background-color: #727272;
+  color: white;
+
+  &:hover {
+    background-color: #feff57;
+    color: #ff0e0e;
+    border: 1px solid #ff0e0e;
+  }
+`;
+
 export const ButtonSpinner = styled(SpinnerContainer)`
   width: 30px;
   height: 30px;

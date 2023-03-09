@@ -15,14 +15,18 @@ import {
   getFirestore,
   doc,
   getDoc,
+  addDoc,
   setDoc,
   collection,
   query,
+  where,
+  orderBy,
   getDocs,
   QueryDocumentSnapshot,
 } from "firebase/firestore";
 
 import { Category } from "../../store/categories/category.types";
+import { Order } from "../../store/orders/orders.types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBcWGoEnJRUczYvh-HADsKOp7NrW6LLv38",
@@ -47,12 +51,13 @@ export const signInWithGooglePopup = () =>
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
 
 export type ObjectToAdd = {
   title: string;
 };
 
+// Function to load collections and documents to Firebase
 // export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
 //   collectionKey: string,
 //   objectsToAdd: T[]
@@ -71,8 +76,8 @@ export type ObjectToAdd = {
 export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
-
   const querySnapshot = await getDocs(q);
+
   return querySnapshot.docs.map(
     (docSnapshot) => docSnapshot.data() as Category
   );
@@ -86,6 +91,7 @@ export type UserData = {
   createdAt: Date;
   displayName: string;
   email: string;
+  id: string;
 };
 
 export const createUserDocumentFromAuth = async (
@@ -151,4 +157,23 @@ export const getCurrentUser = (): Promise<User | null> => {
       reject
     );
   });
+};
+
+export const handleSaveOrder = async (order: Order) => {
+  return await addDoc(collection(db, "orders"), order);
+};
+
+export const handleGetUserOrderHistory = async (uid: string) => {
+  const q = query(
+    collection(db, "orders"),
+    where("orderUserID", "==", uid),
+    orderBy("orderCreatedDate", "desc")
+  );
+  const querySnapshot = await getDocs(q);
+  // querySnapshot.forEach((doc) => {
+  //   // doc.data() is never undefined for query doc snapshots
+  //   console.log(doc.id, " => ", doc.data().order.orderItems);
+  // });
+
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };

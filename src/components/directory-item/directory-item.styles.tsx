@@ -4,7 +4,7 @@ type BackgroundImage = {
   imageUrl: string;
 };
 
-export const BackgroundImage = styled.div<BackgroundImage>`
+export const BackgroundImages = styled.div<BackgroundImage>`
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -53,7 +53,7 @@ export const DirectoryItemContainer = styled.div`
   &:hover {
     cursor: pointer;
 
-    & ${BackgroundImage} {
+    & ${BackgroundImages} {
       transform: scale(1.1);
       transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
