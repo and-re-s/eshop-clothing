@@ -110,3 +110,17 @@ export const Total = styled.div`
   font-size: 20px;
   font-weight: 600;
 `;
+
+export const PleaseSignInContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PleaseSignIn = styled.h1`
+  font-size: 26px;
+  text-align: center;
+  vertical-align: center;
+  color: red;
+`;

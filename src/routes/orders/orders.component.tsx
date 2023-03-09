@@ -23,6 +23,8 @@ import {
   DeliveryDataTable,
   Tr,
   Td,
+  PleaseSignIn,
+  PleaseSignInContainer,
 } from "./orders.styles";
 
 const Orders = () => {
@@ -32,7 +34,9 @@ const Orders = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserOrderHistory(user!.id));
+    if (user) {
+      dispatch(getUserOrderHistory(user!.id));
+    }
   }, [dispatch, user]);
 
   function printAdress(number: number) {
@@ -80,27 +84,35 @@ const Orders = () => {
     <>
       <MainContainer>
         <OrdersContainer>
-          {itemsArray.map((items: OrderItem[], index: number) => (
-            <OrderContainer>
-              <>
-                <ItemsContainer>
-                  {items.map((singleItem, index) => (
-                    <OrderItems key={index} orderItems={singleItem} />
-                  ))}
-                  <Total>Total: ${orders[index].orderTotal}</Total>
-                </ItemsContainer>
-                <DeliveryContainer>
-                  <DeliveryAdressContainer>
-                    {printAdress(index)}
-                  </DeliveryAdressContainer>
-                  <OrderDateContainer>
-                    Order received:
-                    {orders[index].orderCreatedDate.toDate().toString()}
-                  </OrderDateContainer>
-                </DeliveryContainer>
-              </>
-            </OrderContainer>
-          ))}
+          {!user ? (
+            <PleaseSignInContainer>
+              <PleaseSignIn>
+                Please Sign In for placing orders and saving your order history!
+              </PleaseSignIn>
+            </PleaseSignInContainer>
+          ) : (
+            itemsArray.map((items: OrderItem[], index: number) => (
+              <OrderContainer>
+                <>
+                  <ItemsContainer>
+                    {items.map((singleItem, index) => (
+                      <OrderItems key={index} orderItems={singleItem} />
+                    ))}
+                    <Total>Total: ${orders[index].orderTotal}</Total>
+                  </ItemsContainer>
+                  <DeliveryContainer>
+                    <DeliveryAdressContainer>
+                      {printAdress(index)}
+                    </DeliveryAdressContainer>
+                    <OrderDateContainer>
+                      Order received:
+                      {orders[index].orderCreatedDate.toDate().toString()}
+                    </OrderDateContainer>
+                  </DeliveryContainer>
+                </>
+              </OrderContainer>
+            ))
+          )}
         </OrdersContainer>
       </MainContainer>
     </>
