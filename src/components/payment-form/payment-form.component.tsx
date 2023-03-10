@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
@@ -37,6 +38,7 @@ const defaultFormFields = {
 const PaymentForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
 
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const amount = useSelector(selectCartTotal);
@@ -133,7 +135,7 @@ const PaymentForm = () => {
       payment_method: {
         card: cardDetails,
         billing_details: {
-          name: currentUser ? currentUser.displayName : "Guest",
+          name: currentUser!.displayName,
         },
       },
     });
@@ -156,6 +158,7 @@ const PaymentForm = () => {
       clearCartHandler();
       cardDetails.clear();
       alert("Payment Successful!");
+      navigate("/orders");
     }
   };
 
