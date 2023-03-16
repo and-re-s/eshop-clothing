@@ -105,7 +105,7 @@ const Orders = () => {
                       {printAdress(index)}
                     </DeliveryAdressContainer>
                     <OrderDateContainer>
-                      Order received:
+                      Order received:{" "}
                       {orders[index].orderCreatedDate.toDate().toString()}
                     </OrderDateContainer>
                   </DeliveryContainer>
