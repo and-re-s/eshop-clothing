@@ -26,7 +26,7 @@ import {
 } from "firebase/firestore";
 
 import { Category } from "../../store/categories/category.types";
-import { Order } from "../../store/orders/orders.types";
+import { OrderSending } from "../../store/orders/orders.types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBcWGoEnJRUczYvh-HADsKOp7NrW6LLv38",
@@ -159,7 +159,7 @@ export const getCurrentUser = (): Promise<User | null> => {
   });
 };
 
-export const handleSaveOrder = async (order: Order) => {
+export const handleSaveOrder = async (order: OrderSending) => {
   return await addDoc(collection(db, "orders"), order);
 };
 

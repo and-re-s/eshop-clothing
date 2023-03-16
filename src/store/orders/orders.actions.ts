@@ -1,4 +1,9 @@
-import { Uid, Order, OrdersArray, ORDER_ACTION_TYPES } from "./orders.types";
+import {
+  Uid,
+  OrderSending,
+  OrdersArray,
+  ORDER_ACTION_TYPES,
+} from "./orders.types";
 
 import {
   createAction,
@@ -8,7 +13,7 @@ import {
 
 export type SaveOrderHistory = ActionWithPayload<
   ORDER_ACTION_TYPES.SAVE_ORDER_HISTORY_START,
-  Order
+  OrderSending
 >;
 
 export type GetUserOrderHistory = ActionWithPayload<
@@ -22,7 +27,7 @@ export type SetUserOrderHistory = ActionWithPayload<
 >;
 
 export const saveOrderHistory = withMatcher(
-  (order: Order): SaveOrderHistory =>
+  (order: OrderSending): SaveOrderHistory =>
     createAction(ORDER_ACTION_TYPES.SAVE_ORDER_HISTORY_START, order)
 );
 

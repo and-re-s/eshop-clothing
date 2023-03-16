@@ -1,18 +1,18 @@
 import { AnyAction } from "redux";
-import { ORDER_ACTION_TYPES } from "./orders.types";
+import { OrdersArray } from "./orders.types";
+import { setUserOrderHistory } from "./orders.actions";
 
 const INITIAL_STATE = {
-  orderHistory: [],
+  orderHistory: [] as OrdersArray,
 };
 
 export const ordersReducer = (state = INITIAL_STATE, action: AnyAction) => {
-  switch (action.type) {
-    case ORDER_ACTION_TYPES.SET_USER_ORDER_HISTORY:
-      return {
-        ...state,
-        orderHistory: action.payload,
-      };
-    default:
-      return state;
+  if (setUserOrderHistory.match(action)) {
+    return {
+      ...state,
+      orderHistory: action.payload,
+    };
   }
+
+  return state;
 };

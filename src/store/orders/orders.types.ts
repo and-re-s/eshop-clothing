@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { CartItem } from "../cart/cart.types";
 
 export enum ORDER_ACTION_TYPES {
@@ -10,7 +11,7 @@ export type Uid = string;
 
 export type OrderItem = CartItem;
 
-export type Order = {
+export type OrderSending = {
   orderCreatedDate: Date;
   orderUserID: string;
   orderItems: OrderItem[];
@@ -27,4 +28,21 @@ export type Order = {
   };
 };
 
-export type OrdersArray = Order[];
+export type OrderReceiving = {
+  orderCreatedDate: Timestamp;
+  orderUserID: string;
+  orderItems: OrderItem[];
+  orderTotal: number;
+  orderDelivery: {
+    firstName: string;
+    lastName: string;
+    mobile: string;
+    adress1: string;
+    adress2: string;
+    city: string;
+    country: string;
+    postcode: string;
+  };
+};
+
+export type OrdersArray = OrderReceiving[];

@@ -1,6 +1,11 @@
 import { takeLatest, put, all, call } from "typed-redux-saga/macro";
 
-import { Uid, Order, ORDER_ACTION_TYPES, OrdersArray } from "./orders.types";
+import {
+  Uid,
+  OrderSending,
+  ORDER_ACTION_TYPES,
+  OrdersArray,
+} from "./orders.types";
 import {
   handleSaveOrder,
   handleGetUserOrderHistory,
@@ -28,7 +33,12 @@ export function* onGetUserOrderHistoryStart() {
   );
 }
 
-export function* saveOrder({ payload }: { type: string; payload: Order }) {
+export function* saveOrder({
+  payload,
+}: {
+  type: string;
+  payload: OrderSending;
+}) {
   try {
     yield handleSaveOrder(payload);
   } catch (error) {
