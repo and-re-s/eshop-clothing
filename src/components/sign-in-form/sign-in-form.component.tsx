@@ -38,7 +38,7 @@ const SignInForm = () => {
     dispatch(googleSignInStart());
   };
 
-  const handleSubmit = async (event: MouseEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
@@ -76,7 +76,7 @@ const SignInForm = () => {
         value={password}
       />
       <SignInButtonContainer>
-        <Button type="submit" onClick={(e) => handleSubmit}>
+        <Button type="submit" onClick={handleSubmit}>
           Sign In
         </Button>
         <Button
