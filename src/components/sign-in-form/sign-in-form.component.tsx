@@ -63,7 +63,7 @@ const SignInForm = () => {
         label="Email"
         required
         type="email"
-        onChange={(e) => handleChange}
+        onChange={handleChange}
         name="email"
         value={email}
       />
