@@ -1,7 +1,15 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+# E-commerce clothes website 🔥   
+## Overview 🌟  
+This is an front-end project built with React, React Router, Redux Saga, and styled-components. The project is fully TypeScripted and connected to Firebase for data storage and Google auth, as well as to Stripe for payments.
+  
+## Features 🚀  
+* Built with the latest front-end technologies, including React, React Router, Redux Saga, and styled-components  
+* Fully TypeScripted for maximum type safety and error prevention  
+* Connected to Firebase for data storage and Google auth, ensuring that your users data is always safe and secure  
+* Connected to Stripe for payments, making it easy to monetize and accept payments from users  
+* Easy to use and customize, with a simple file structure 
+* Mobile-friendly  
+  
 ## Available Scripts
 
 In the project directory, you can run:
