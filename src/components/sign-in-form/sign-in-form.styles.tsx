@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SingInContainer = styled.div`
+export const SignInContainer = styled.div`
   width: 35%;
   margin: 1rem 3rem 3rem 3rem;
   @media only screen and (max-width: 520px) {
@@ -21,7 +21,7 @@ export const SpanContainer = styled.span`
   font-size: 1.2rem;
 `;
 
-export const SignInButtonContainer = styled.div`
+export const ButtonsContainer = styled.div`
   width: 100%;
   display: grid;
   @media only screen and (max-width: 1000px) {

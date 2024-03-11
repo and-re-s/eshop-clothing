@@ -1,19 +1,24 @@
-import { useState, MouseEvent, ChangeEvent } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
-import { useDispatch } from "react-redux/es/exports";
 
 import {
-  SingInContainer,
-  H2Container,
-  SpanContainer,
-  SignInButtonContainer,
-} from "./sign-in-form.styles";
-
+  signInAuthUserWithEmailAndPassword,
+  signInWithGooglePopup,
+} from "../../utils/firebase/firebase.utils";
 import {
   googleSignInStart,
   emailSignInStart,
 } from "../../store/user/user.action";
+
+import {
+  SignInContainer,
+  ButtonsContainer,
+  H2Container,
+  SpanContainer,
+} from "./sign-in-form.styles";
 
 const defaultFormFields = {
   email: "",
@@ -29,65 +34,63 @@ const SignInForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormFields({ ...formFields, [name]: value });
-  };
-
-  const logGoogleUser = async () => {
+  const signInWithGoogle = async () => {
+    await signInWithGooglePopup();
     dispatch(googleSignInStart());
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
+      await signInAuthUserWithEmailAndPassword(email, password);
       dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (error) {
-      if (error === "auth/wrong-password") {
-        alert("Incorrect password");
-      }
-      if (error === "auth/user-not-found") {
-        alert("User not found");
-      }
-      console.log(error);
+      console.log("user sign in failed", error);
     }
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    setFormFields({ ...formFields, [name]: value });
+  };
+
   return (
-    <SingInContainer>
+    <SignInContainer>
       <H2Container>Already have an account?</H2Container>
-      <SpanContainer>Sign In with your email and passwords</SpanContainer>
-      <FormInput
-        label="Email"
-        required
-        type="email"
-        onChange={handleChange}
-        name="email"
-        value={email}
-      />
-      <FormInput
-        label="Password"
-        required
-        type="password"
-        onChange={handleChange}
-        name="password"
-        value={password}
-      />
-      <SignInButtonContainer>
-        <Button type="submit" onClick={handleSubmit}>
-          Sign In
-        </Button>
-        <Button
-          type="button"
-          buttonType={BUTTON_TYPE_CLASSES.google}
-          onClick={logGoogleUser}
-        >
-          Sign In with Google
-        </Button>
-      </SignInButtonContainer>
-    </SingInContainer>
+      <SpanContainer>Sign in with your email and password</SpanContainer>
+      <form onSubmit={handleSubmit}>
+        <FormInput
+          label="Email"
+          type="email"
+          required
+          onChange={handleChange}
+          name="email"
+          value={email}
+        />
+
+        <FormInput
+          label="Password"
+          type="password"
+          required
+          onChange={handleChange}
+          name="password"
+          value={password}
+        />
+        <ButtonsContainer>
+          <Button type="submit">Sign In</Button>
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            type="button"
+            onClick={signInWithGoogle}
+          >
+            Sign In With Google
+          </Button>
+        </ButtonsContainer>
+      </form>
+    </SignInContainer>
   );
 };
 
